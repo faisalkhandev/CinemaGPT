@@ -3,11 +3,11 @@ const HeaderSignUp = () => {
         <>
             <div>
                 <img
-                    className="absolute mx-4"
-                    src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-                    alt="CinemaGPT"
-                    width="12%"
-                    height="12%"
+                    className="mx-4 z-10 absolute bg-slate-400 bg-opacity-30"
+                    src="https://i.postimg.cc/jjrR94Sj/Cinema-GPTlogo.png"
+                    alt="CinemaGPT_Logo"
+                    width="22%"
+                    height="22%"
                 />
             </div>
 
