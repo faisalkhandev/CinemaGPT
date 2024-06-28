@@ -20,7 +20,9 @@ const SignUp = () => {
         e.preventDefault();
         console.log("email", email?.current?.value)
         console.log("password", password?.current?.value)
-        const errMsg = Validation(email?.current?.value, password?.current?.value)
+        console.log("name", name?.current?.value)
+
+        const errMsg = Validation(name?.current?.value, email?.current?.value, password?.current?.value,)
         setErrMsg(errMsg)
         console.log("errMsg::", errMsg)
     }
