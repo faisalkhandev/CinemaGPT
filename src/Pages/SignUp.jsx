@@ -2,8 +2,8 @@ import { SignUpHeader } from "../Components";
 import { useRef, useState } from "react";
 import { Validation } from "../utils/Validations";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const SignUp = () => {
     //states
