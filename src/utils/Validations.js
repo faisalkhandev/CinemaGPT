@@ -14,5 +14,5 @@ export const Validation = (name, email, password) => {
     if (!isNameValid) return "The name is not valid"
 
 
-    return null
+    return null;
 }

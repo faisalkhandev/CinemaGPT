@@ -1,6 +1,9 @@
 import { SignUpHeader } from "../Components";
 import { useRef, useState } from "react";
 import { Validation } from "../utils/Validations";
+import { auth } from "../utils/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
     //states
@@ -25,7 +28,45 @@ const SignUp = () => {
         const errMsg = Validation(name?.current?.value, email?.current?.value, password?.current?.value,)
         setErrMsg(errMsg)
         console.log("errMsg::", errMsg)
+
+        if (errMsg) return;
+
+        if (!isSingIn) {
+            auth
+            createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    console.log("userSignup", user)
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrMsg(errorCode + " " + errorMessage)
+                });
+        }
+        else {
+
+            auth
+            signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log("singIn::", user)
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrMsg(errorCode + " " + errorMessage)
+                });
+        }
+
+
+
     }
+
+
 
 
     return (
@@ -33,7 +74,7 @@ const SignUp = () => {
             <SignUpHeader />
             <div className="mainBox flex justify-center items-center h-screen">
                 <img
-                    // src="https://assets.nflxext.com/ffe/siteui/vlv3/1fd8c6d0-20db-4667-860e-dd1ad7353ac0/0a95d6aa-8987-4893-bc7c-db312ef24a95/PK-en-20240624-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    src="https://assets.nflxext.com/ffe/siteui/vlv3/1fd8c6d0-20db-4667-860e-dd1ad7353ac0/0a95d6aa-8987-4893-bc7c-db312ef24a95/PK-en-20240624-popsignuptwoweeks-perspective_alpha_website_large.jpg"
                     alt="wallpaper"
                     className="absolute inset-0 object-cover w-full h-full"
                 />
