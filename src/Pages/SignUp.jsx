@@ -2,8 +2,10 @@ import { SignUpHeader } from "../Components";
 import { useRef, useState } from "react";
 import { Validation } from "../utils/Validations";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Redux/userSlice";
 
 
 const SignUp = () => {
@@ -11,8 +13,9 @@ const SignUp = () => {
     const [isSingIn, setIsSignIn] = useState(true);
     const [errMsg, setErrMsg] = useState("")
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const name = useRef(null)
+    const nameRef = useRef(null)
     const email = useRef(null)
     const password = useRef(null)
 
@@ -25,9 +28,9 @@ const SignUp = () => {
         e.preventDefault();
         console.log("email", email?.current?.value)
         console.log("password", password?.current?.value)
-        console.log("name", name?.current?.value)
+        console.log("nameRef", nameRef?.current?.value)
 
-        const errMsg = Validation(name?.current?.value, email?.current?.value, password?.current?.value,)
+        const errMsg = Validation(nameRef?.current?.value, email?.current?.value, password?.current?.value,)
         setErrMsg(errMsg)
         console.log("errMsg::", errMsg)
 
@@ -39,6 +42,19 @@ const SignUp = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
+                    console.log("user:::", user)
+                    updateProfile(user, {
+                        displayName: nameRef.current?.value,
+                        photoURL: "https://example.com/jane-q-user/profile.jpg"
+                    })
+                        .then(() => {
+                            const { uid, displayName, email, photoURL } = auth.currentUser;
+                            dispatch(addUser({ uid, displayName, email, photoURL }))
+                            console.log("signInUser::", user);
+                            navigate("/browser");
+                        })
+
+
                     navigate("/browser")
                     console.log("userSignup", user)
 
@@ -56,7 +72,9 @@ const SignUp = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log("singIn::", user)
+                    const { uid, displayName, email, photoURL } = user;
+                    dispatch(addUser({ uid, displayName, email, photoURL }))
+                    navigate("/browser")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -91,16 +109,16 @@ const SignUp = () => {
                         {!isSingIn &&
                             <input
                                 type="text"
-                                placeholder="Enter your full name"
-                                className="mb-4 p-2 rounded-md"
-                                ref={name}
+                                placeholder="Enter your full nameRef"
+                                className="mb-4 p-2 rounded-md  bg-slate-600 text-white focus:border-white focus:ring-0"
+                                ref={nameRef}
                             />}
 
                         <input
                             type="email"
                             name="email"
                             placeholder="Enter your email"
-                            className="mb-4 p-2 rounded-md"
+                            className="mb-4 p-2 rounded-md bg-slate-600 text-white focus:border-white focus:ring-0"
                             ref={email}
                         />
 
@@ -108,7 +126,7 @@ const SignUp = () => {
                             type="password"
                             name="email"
                             placeholder="Enter your password"
-                            className="mb-4 p-2 rounded-md"
+                            className="mb-4 p-2 rounded-md  bg-slate-600 text-white focus:border-white focus:ring-0"
                             ref={password}
                         />
                         {

@@ -1,1 +1,1 @@
-export { default as SignUpHeader } from './HeaderSignUp'
+export { default as SignUpHeader } from './Header'

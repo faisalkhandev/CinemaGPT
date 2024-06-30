@@ -5,7 +5,7 @@ import { MainPage, SignUp } from './Pages';
 import { useEffect } from 'react';
 import { auth } from './utils/firebase';
 import { useDispatch } from 'react-redux';
-import { addUser, removeUser } from './Redux/userSlice';
+import { removeUser } from './Redux/userSlice';
 
 
 function App() {
@@ -30,9 +30,8 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
-        const { uid, displayName, email } = user;
-        console.log("uId::", uid, displayName, email)
-        dispatch(addUser({ uid, displayName, email }))
+        const { uid, displayName, email, photoURL } = user;
+        console.log("uId::", uid, displayName, email, photoURL)
 
       } else {
         // User is signed out
