@@ -8,9 +8,7 @@ const movieSlice = createSlice({
     },
     reducers: {
         setMoviesList: (state, action) => {
-            console.log('Action Payload:', action.payload);
             state.moviesList = action.payload;
-            console.log('Updated State:', state.moviesList);
         }
     }
 
