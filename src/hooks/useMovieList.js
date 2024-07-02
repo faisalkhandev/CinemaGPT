@@ -1,27 +1,26 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setMoviesList } from "../Redux/movieSlice";
+import { useState, useEffect } from "react";
 import { options } from "../utils/constant";
 
-const movieAPI = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-
-
-
-export const useMovieList = () => {
-    const dispatch = useDispatch();
+export const useGetData = (api) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     async function getMoviesList() {
         try {
-            const data = await fetch(movieAPI, options);
-            const json = await data.json();
-            console.log("Movies::", json);
-            dispatch(setMoviesList(json.results));
+            const response = await fetch(api, options);
+            const json = await response.json();
+            setData(json);
+            setLoading(false);
         } catch (error) {
-            console.log("errorMovies::", error);
+            setError(error);
+            setLoading(false);
         }
     }
 
     useEffect(() => {
         getMoviesList();
-    }, []);
+    }, [api]);
+
+    return { data, loading, error };
 }
