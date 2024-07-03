@@ -16,7 +16,7 @@ const HeaderSignUp = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
         }).catch((error) => {
-            console.log("errorSingOut;:", error)
+
         });
 
         dispatch(removeUser())
@@ -26,7 +26,7 @@ const HeaderSignUp = () => {
     return (
         <>
 
-            <div className="w-full bg-white z-20 flex justify-between items-center align-middle">
+            <div className="w-full bg-black z-20 flex justify-between items-center align-middle">
                 <img
                     className="mx-4 z-10 bg-slate-400 bg-opacity-30"
                     src="https://i.postimg.cc/jjrR94Sj/Cinema-GPTlogo.png"
@@ -35,9 +35,9 @@ const HeaderSignUp = () => {
                     height="22%"
                 />
                 <div className="flex align-middle items-center ">
-                    <FaRegUser className="mt-1 mx-3 text-[30px] " />
-                    <p className="font-bold text-red-900">{selector?.[0]?.displayName}</p>
-                    <button type="button" className="mx-2 bg-blue-950 rounded-sm p-3 text-white" onClick={handleLogout}>{!selector ? "Login" : "Logout"}</button>
+                    <FaRegUser className="mt-1 mx-3 text-[30px] text-white " />
+                    <p className="font-bold text-white">{selector?.[0]?.displayName || "Default"} </p>
+                    <button type="button" className="mx-2 bg-white rounded-sm p-3 text-black font-bold" onClick={handleLogout}>{!selector ? "Login" : "Logout"}</button>
 
                 </div>
 
