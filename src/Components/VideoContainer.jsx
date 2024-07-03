@@ -7,7 +7,7 @@ const VideoContainer = (props) => {
 
 
     return (
-        <div className="mt-40 mx-16">
+        <div className="absolute mt-40 mx-16">
             <h1 className="text-slate-700 font-bold text-[30px]">{title}</h1>
             <p className="text-slate-700 font-medium mt-2 w-6/12 text-justify ">{desc}</p>
 
