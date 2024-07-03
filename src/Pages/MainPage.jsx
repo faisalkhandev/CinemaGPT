@@ -4,6 +4,7 @@ import HeaderSignUp from "../Components/Header";
 import { useGetData } from "../hooks/useMovieList";
 import { VideoContainer, VideoTitle } from "../Components";
 import { setMoviesList } from "../Redux/movieSlice";
+import SecondaryContainer from './SecondaryContainer';
 
 const MainPage = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const MainPage = () => {
 
     useEffect(() => {
         if (movies && movies.length > 0) {
-            console.log("movies.length::", movies);
+            console.log("moviesRender::", movies)
         }
     }, [movies]);
 
@@ -39,8 +40,9 @@ const MainPage = () => {
                 <HeaderSignUp />
             </div>
             <div>
-                <VideoTitle movieId={id} />
                 <VideoContainer title={original_title} desc={overview} />
+                <VideoTitle movieId={id} />
+                <SecondaryContainer />
             </div>
         </>
     );

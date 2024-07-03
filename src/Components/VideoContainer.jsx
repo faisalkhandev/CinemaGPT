@@ -7,13 +7,13 @@ const VideoContainer = (props) => {
 
 
     return (
-        <div className="absolute mt-40 mx-16">
-            <h1 className="text-slate-700 font-bold text-[30px]">{title}</h1>
-            <p className="text-slate-700 font-medium mt-2 w-6/12 text-justify ">{desc}</p>
+        <div className="absolute top-2/4 bg-gradient-to-r from-gray-600 p-10 w-8/12">
+            <h1 className="text-white font-bold text-[30px]">{title}</h1>
+            <p className="text-white font-medium mt-2 w-7/12 text-justify ">{desc}</p>
 
             <div className="flex mt-8" >
                 <span>
-                    <button className="flex items-center p-3 px-10 bg-gray-500 text-white rounded-md font-bold">
+                    <button className="flex items-center p-3 px-10 bg-white text-black hover:bg-slate-300 rounded-md font-bold">
                         <FaPlay className="mr-2" /> Play
                     </button>
                 </span>
