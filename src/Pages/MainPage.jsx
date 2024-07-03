@@ -12,8 +12,12 @@ const MainPage = () => {
 
     // Movies API calling
     const { data: movieList, loading, error } = useGetData(url);
-    dispatch(setMoviesList(movieList?.results));
 
+    useEffect(() => {
+        if (movieList && movieList.results) {
+            dispatch(setMoviesList(movieList.results));
+        }
+    }, [movieList, dispatch]);
 
     const movies = useSelector((state) => state.movies?.moviesList);
 
@@ -27,7 +31,7 @@ const MainPage = () => {
     if (error) return <p>Error loading data</p>;
     if (!movies || movies.length === 0) return null;
 
-    const { original_title, overview } = movies?.[0] || {};
+    const { original_title, overview, id } = movies?.[0] || {};
 
     return (
         <>
@@ -35,7 +39,7 @@ const MainPage = () => {
                 <HeaderSignUp />
             </div>
             <div>
-                <VideoTitle />
+                <VideoTitle movieId={id} />
                 <VideoContainer title={original_title} desc={overview} />
             </div>
         </>

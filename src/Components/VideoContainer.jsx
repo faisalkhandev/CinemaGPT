@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
 import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 
 const VideoContainer = (props) => {
     const { title, desc } = props
+
+
     return (
         <div className="mt-40 mx-16">
             <h1 className="text-slate-700 font-bold text-[30px]">{title}</h1>
