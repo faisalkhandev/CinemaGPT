@@ -1,8 +1,13 @@
+import { useSelector } from "react-redux";
+import { useNowPlayingMovie } from "../hooks/useNowPlayingMovie"
 
 const SecondaryContainer = () => {
+    useNowPlayingMovie();
+    const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMov)
+    console.log("nowPlayingSecondary::", nowPlayingMovies)
     return (
         <div>
-            secondaryContainer
+            MovieList
         </div>
     )
 }

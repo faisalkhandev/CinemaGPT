@@ -28,7 +28,7 @@ const HeaderSignUp = () => {
 
             <div className="w-full bg-black z-20 flex justify-between items-center align-middle">
                 <img
-                    className="mx-4 z-10 bg-slate-400 bg-opacity-30"
+                    className="mx-4 z-10"
                     src="https://i.postimg.cc/jjrR94Sj/Cinema-GPTlogo.png"
                     alt="CinemaGPT_Logo"
                     width="22%"
