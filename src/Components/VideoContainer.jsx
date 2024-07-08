@@ -5,9 +5,8 @@ import { FaInfoCircle } from "react-icons/fa";
 const VideoContainer = (props) => {
     const { title, desc } = props
 
-
     return (
-        <div className="absolute top-2/4 bg-gradient-to-r from-gray-600 p-10 w-8/12">
+        <div className="absolute mt-52  bg-gradient-to-r from-gray-600 p-10 w-8/12 z-10">
             <h1 className="text-white font-bold text-[30px]">{title}</h1>
             <p className="text-white font-medium mt-2 w-7/12 text-justify ">{desc}</p>
 
@@ -27,4 +26,4 @@ const VideoContainer = (props) => {
     )
 }
 
-export default VideoContainer
+export default VideoContainer;

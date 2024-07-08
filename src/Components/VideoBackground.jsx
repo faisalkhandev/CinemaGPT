@@ -4,7 +4,7 @@ import { useGetData } from "../hooks/useMovieList";
 
 const VideoTitle = (props) => {
     const [trailer, setTrailer] = useState([]);
-    const { movieId } = props;
+    const { movieId } = props;  // Ensure you pass title and desc as props
 
     const url = `https://api.themoviedb.org/3/movie/${movieId}/videos`;
     const { data: trailorData } = useGetData(url);
@@ -14,24 +14,21 @@ const VideoTitle = (props) => {
             const filterTrailor = trailorData.results.filter(
                 (trailor) => trailor.type === "Trailer"
             );
+            console.log("filterTrailor::", filterTrailor)
             const selectedTrailer = filterTrailor.length > 0 ? filterTrailor[0] : trailorData.results[0];
             setTrailer(selectedTrailer);
         }
     }, [trailorData]);
 
-    console.log("videoMovies::", trailorData);
-    console.log("filterTrailor", trailer);
-    console.log("tailorfinall:::", trailer);
-
     return (
-        <div className="w-screen h-screen ">
+        <div className="relative w-full">
             {trailer ? (
                 <iframe
-                    src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&showinfo=0`}
+                    className="w-full aspect-video"
+                    src={`https://www.youtube.com/embed/${trailer.key}?&autoplay=1&mute=1`}
                     title={trailer.name}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                    className="w-screen aspect-video"
                 ></iframe>
             ) : (
                 "Loading..."
