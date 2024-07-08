@@ -5,15 +5,18 @@ import { MovieList } from "../Components";
 const SecondaryContainer = () => {
     useNowPlayingMovie();
     const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMov)
-    console.log("nowPlayingSecondary::", nowPlayingMovies)
+    const Popular = useSelector((store) => store.movies.moviesList)
+    const topRatedMovies = useSelector((store) => store.movies.topRatedMovies)
+
+    console.log("TopRatedMOvies::", topRatedMovies)
     return (
         <div className="bg-black">
 
             <div className="mt-0 md:-mt-52 pl-4 md:pl-12 relative z-20">
 
-                <MovieList title="Now Playing" movies={nowPlayingMovies} />
-                <MovieList title="Trending Movies" movies={nowPlayingMovies} />
-                <MovieList title="Popular Movies" movies={nowPlayingMovies} />
+                <MovieList title="Top Rated Movies" movies={topRatedMovies} />
+                <MovieList title="Popular Movies" movies={Popular} />
+                <MovieList title="Playing Movies" movies={nowPlayingMovies} />
 
             </div>
         </div>

@@ -4,7 +4,7 @@ import { IMG_URL } from "../utils/constant"
 
 const MovieList = ({ title, movies }) => {
 
-    console.log("movies::", movies)
+
 
     return (
         <>

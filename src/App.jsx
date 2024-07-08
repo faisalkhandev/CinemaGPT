@@ -6,9 +6,15 @@ import { useEffect } from 'react';
 import { auth } from './utils/firebase';
 import { useDispatch } from 'react-redux';
 import { removeUser } from './Redux/userSlice';
+import { useNowPlayingMovie } from './hooks/useNowPlayingMovie';
+import { useTopRatedMovies } from './hooks/useTopRatedMovies';
 
 
 function App() {
+
+  useNowPlayingMovie();
+  useTopRatedMovies();
+
 
   const dispatch = useDispatch();
 
