@@ -5,6 +5,8 @@ import { useGetData } from "../hooks/useMovieList";
 import { VideoContainer, VideoTitle } from "../Components";
 import { setMoviesList } from "../Redux/movieSlice";
 import SecondaryContainer from './SecondaryContainer';
+import Loader from "../Components/Loader/Loader";
+import GptSearchPage from "./GptSearchPage";
 
 const MainPage = () => {
     const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const MainPage = () => {
     }, [movieList, dispatch]);
 
     const movies = useSelector((state) => state.movies?.moviesList);
+    const gptView = useSelector((state) => state.gpt.showGptToggle)
 
     useEffect(() => {
         if (movies && movies.length > 0) {
@@ -28,7 +31,7 @@ const MainPage = () => {
         }
     }, [movies]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <div className="flex justify-center items-center"><Loader /></div>;
     if (error) return <p>Error loading data</p>;
     if (!movies || movies.length === 0) return null;
 
@@ -39,6 +42,9 @@ const MainPage = () => {
             <div>
                 <HeaderSignUp />
             </div>
+            {
+                gptView && <GptSearchPage />
+            }
             <div>
                 <VideoContainer title={original_title} desc={overview} />
                 <VideoTitle movieId={id} />
