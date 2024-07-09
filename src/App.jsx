@@ -5,7 +5,7 @@ import { MainPage, SignUp } from './Pages';
 import { useEffect } from 'react';
 import { auth } from './utils/firebase';
 import { useDispatch } from 'react-redux';
-import { removeUser } from './Redux/userSlice';
+import { addUser, removeUser } from './Redux/userSlice';
 import { useNowPlayingMovie } from './hooks/useNowPlayingMovie';
 import { useTopRatedMovies } from './hooks/useTopRatedMovies';
 
@@ -38,6 +38,12 @@ function App() {
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, displayName, email, photoURL } = user;
         console.log("uId::", uid, displayName, email, photoURL)
+        dispatch(addUser({
+          uid: uid,
+          displayName: displayName,
+          email: email,
+          photoURL: photoURL,
+        }))
 
       } else {
         // User is signed out
