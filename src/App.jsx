@@ -1,13 +1,13 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import { onAuthStateChanged } from "firebase/auth";
 import './App.css'
-import { MainPage, SignUp } from './Pages';
 import { useEffect } from 'react';
 import { auth } from './utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from './Redux/userSlice';
 import { useNowPlayingMovie } from './hooks/useNowPlayingMovie';
 import { useTopRatedMovies } from './hooks/useTopRatedMovies';
+import { appRoute } from './Routes/Route';
 
 
 function App() {
@@ -18,16 +18,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const appRoute = createBrowserRouter([
-    {
-      path: "/",
-      element: <SignUp />
-    },
-    {
-      path: "/browser",
-      element: <MainPage />
-    }
-  ]);
+
 
 
   useEffect(() => {
@@ -52,6 +43,7 @@ function App() {
     });
 
   }, [])
+
 
 
 

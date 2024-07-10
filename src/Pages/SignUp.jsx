@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Redux/userSlice";
+import { BG_IMG_URL } from "../utils/constant";
 
 
 const SignUp = () => {
@@ -95,7 +96,7 @@ const SignUp = () => {
             <SignUpHeader />
             <div className="mainBox flex justify-center items-center h-screen">
                 <img
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/1fd8c6d0-20db-4667-860e-dd1ad7353ac0/0a95d6aa-8987-4893-bc7c-db312ef24a95/PK-en-20240624-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    src={BG_IMG_URL}
                     alt="wallpaper"
                     className="absolute inset-0 object-cover w-full h-full"
                 />

@@ -31,7 +31,7 @@ const MainPage = () => {
         }
     }, [movies]);
 
-    if (loading) return <div className="flex justify-center items-center"><Loader /></div>;
+    if (loading) return <div className="flex justify-center items-center mt-10"><Loader /></div>;
     if (error) return <p>Error loading data</p>;
     if (!movies || movies.length === 0) return null;
 
@@ -43,13 +43,13 @@ const MainPage = () => {
                 <HeaderSignUp />
             </div>
             {
-                gptView && <GptSearchPage />
+                gptView ? <GptSearchPage /> : <div>
+                    <VideoContainer title={original_title} desc={overview} />
+                    <VideoTitle movieId={id} />
+                    <SecondaryContainer />
+                </div>
             }
-            <div>
-                <VideoContainer title={original_title} desc={overview} />
-                <VideoTitle movieId={id} />
-                <SecondaryContainer />
-            </div>
+
         </>
     );
 };
