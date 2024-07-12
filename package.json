@@ -12,7 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "firebase": "^10.12.2",
-    "openai": "^4.52.4",
+    "openai": "^4.52.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
