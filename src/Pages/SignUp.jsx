@@ -27,9 +27,7 @@ const SignUp = () => {
 
     function handleButton(e) {
         e.preventDefault();
-        console.log("email", email?.current?.value)
-        console.log("password", password?.current?.value)
-        console.log("nameRef", nameRef?.current?.value)
+
 
         const errMsg = Validation(nameRef?.current?.value, email?.current?.value, password?.current?.value,)
         setErrMsg(errMsg)
@@ -43,7 +41,7 @@ const SignUp = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    console.log("user:::", user)
+
                     updateProfile(user, {
                         displayName: nameRef.current?.value,
                         photoURL: "https://example.com/jane-q-user/profile.jpg"
@@ -51,13 +49,12 @@ const SignUp = () => {
                         .then(() => {
                             const { uid, displayName, email, photoURL } = auth.currentUser;
                             dispatch(addUser({ uid, displayName, email, photoURL }))
-                            console.log("signInUser::", user);
+
                             navigate("/browser");
                         })
 
 
                     navigate("/browser")
-                    console.log("userSignup", user)
 
                 })
                 .catch((error) => {

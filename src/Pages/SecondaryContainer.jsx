@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
     const Popular = useSelector((store) => store.movies.moviesList)
     const topRatedMovies = useSelector((store) => store.movies.topRatedMovies)
 
-    console.log("TopRatedMOvies::", topRatedMovies)
+
     return (
         <div className="bg-black">
 

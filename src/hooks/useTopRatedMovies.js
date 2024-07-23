@@ -19,7 +19,7 @@ export const useTopRatedMovies = () => {
             try {
                 const response = await fetch(url, options);
                 const json = await response.json();
-                console.log('API Response:', json);
+
                 if (json.results) {
                     dispatch(topRatedMovies(json.results));
                 } else {
