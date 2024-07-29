@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import openai from "../utils/openai";
 import { options } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addGptMovies } from "../Redux/gptSlice";
 
 const GptSearchBar = () => {
     const searchText = useRef(null);
+    const dispatch = useDispatch();
 
     async function searchMovies(movie) {
         const url = `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`
@@ -53,6 +56,21 @@ const GptSearchBar = () => {
 
             console.log("promise resolved and final result", allMoviesResult)
 
+
+            //write this part in the book. 
+            // Ensure each item in allMoviesResult is an array and filter the results for original_language
+            const filteredMovies = allMoviesResult.map(movies =>
+                Array.isArray(movies) ? movies.filter(movie =>
+                    movie.original_language === 'en' ||
+                    movie.original_language === 'hi' ||
+                    movie.original_language === 'ur'
+                ) : []
+            );
+
+            console.log("Filtered Movies by language::", filteredMovies)
+
+            // Dispatch the filtered movies
+            dispatch(addGptMovies({ moviesName: gptMovies, gptMovies: filteredMovies }));
 
         } catch (error) {
             console.log("error::", error)
