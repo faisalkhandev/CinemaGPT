@@ -58,7 +58,6 @@ const GptSearchBar = () => {
 
 
             //write this part in the book. 
-            // Ensure each item in allMoviesResult is an array and filter the results for original_language
             const filteredMovies = allMoviesResult.map(movies =>
                 Array.isArray(movies) ? movies.filter(movie =>
                     movie.original_language === 'en' ||
@@ -69,7 +68,6 @@ const GptSearchBar = () => {
 
             console.log("Filtered Movies by language::", filteredMovies)
 
-            // Dispatch the filtered movies
             dispatch(addGptMovies({ moviesName: gptMovies, gptMovies: filteredMovies }));
 
         } catch (error) {

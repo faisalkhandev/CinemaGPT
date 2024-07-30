@@ -9,6 +9,7 @@ const HeaderSignUp = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
+    const gptView = useSelector((state) => state.gpt.showGptToggle)
 
     function handleLogout() {
         const auth = getAuth();
@@ -41,7 +42,7 @@ const HeaderSignUp = () => {
                 {
                     user &&
                     <div className="flex align-middle items-center ">
-                        <button className="bg-white text-black p-3 font-bold rounded" onClick={handleSearchBtn}>Search</button>
+                        <button className="bg-white text-black p-3 font-bold rounded" onClick={handleSearchBtn}>{gptView ? 'HomePage' : 'Search Movies'}</button>
                         <FaRegUser className="mt-1 mx-3 text-[30px] text-white " />
                         <p className="font-bold text-white">
                             {user?.[0]?.displayName || "Default"}{" "}
