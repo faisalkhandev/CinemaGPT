@@ -16,3 +16,12 @@ CinemaGPT is built using modern technologies to ensure a seamless and engaging u
 - **Tailwind**: A utility-first CSS framework for styling.
 - **Firebase**: A platform for backend services such as authentication, database, and hosting.
 - **OpenAI APIs**: For powering the intelligent movie recommendation feature.
+
+## Open for Contributions
+CinemaGPT is an open-source project, and we welcome contributions from the community. Whether you're a developer, designer, or movie enthusiast, you can help us improve and expand the platform. 
+
+### How to Contribute
+1. **Fork the Repository**: Create your own fork of the project repository on GitHub.
+2. **Create a New Branch**: Make changes on a new branch to keep your modifications organized.
+3. **Submit a Pull Request**: Once you're ready, submit a pull request with a description of your changes.
+
